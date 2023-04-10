@@ -97,6 +97,14 @@ const BoxComponent = (props) => {
         nav("/login")
     }, [])
 
+
+    const navs = useNavigate()
+    const loginState = useSelector(selectLoginState);
+
+    useEffect(() => {
+        loginState.status ? navs("/") : navs("/login")
+    },[])
+
     return (
         <>
             <div className="main">
