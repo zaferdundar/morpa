@@ -128,4 +128,16 @@
     height: 20px;
 }
 
+.box-stick {
+    border: 1px solid white;
+    color: white;
+    height: 300px;
+    width: 3px;
+    position: absolute;
+    background-color: white;
+    z-index: -1;
+    margin-left: 7px;
+    border-radius: 5px;
+}
+
 

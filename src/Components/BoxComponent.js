@@ -67,7 +67,7 @@ const BoxComponent = (props) => {
     const giveMeObject = useCallback((valueOfArrayItem) => {
         let obj = [];
         for(let a = 0; a < valueOfArrayItem; a++){
-            obj.push(<div className="box-item"></div>);
+            obj.push(<div className="box-item" style={{borderRadius:"4px"}}></div>);
         }
         return obj;
     },[])
@@ -142,10 +142,12 @@ const BoxComponent = (props) => {
                                                 height: 400,
                                                 display: "flex",
                                                 flexDirection: "column",
-                                                justifyContent: "flex-end"
+                                                justifyContent: "flex-end",
+                                                zIndex:"2",
                                             }}>
                                                 {giveMeObject(itemValue)}
                                                 <div className="box-item-starter"></div>
+                                                <div className="box-stick"></div>
                                             </div>
                                         ))
                                     }
