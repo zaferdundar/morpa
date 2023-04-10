@@ -6,6 +6,7 @@ import {selectLoginState, setLoginState, setUserInitialState} from "../features/
 import {useNavigate} from "react-router-dom";
 import {ToWords} from "to-words";
 import {RxSpeakerLoud} from "react-icons/rx";
+import "./style.css"
 
 const BoxComponent = (props) => {
 
@@ -98,43 +99,62 @@ const BoxComponent = (props) => {
 
     return (
         <>
-            <h1>Hosgeldin : {userData.username}</h1>
-            <h1>{words}</h1>
-            <button type="button" onClick={() => textToSpeech()}><RxSpeakerLoud size={30} /></button>
-            <div className="container">
-                {
-                    array.map((itemValue,index) => {
-                        return (
-                            <div className="container-top">
-                                <button disabled={itemValue === 9} type="button" className="btn-artir"
-                                        onClick={() => dispatch(increment(index))}>+
-                                </button>
-                                <div className="array-item">{itemValue}</div>
-                                <button disabled={itemValue === 0} type="button" className="btn-azalt"
-                                        onClick={() => dispatch(decrement(index))}>-
-                                </button>
-                            </div>
-                        )
-                    })
-                }
-                <button type="button" className="reset"  onClick={() => resetData()}>Reset</button>
-                <button type="button" className="logout"  onClick={() => logout()}>Logout</button>
-                <input type="text" className="new-data-input" placeholder="New" value={dataValue} onChange={(e) => setDataValue(e.target.value)}/>
-                <button type="button" className="new-data-btn"  onClick={() => newData()}>New Data</button>
-                <div className="container-bottom">
-                    <div className="box-container">
-                        <div style={{display: "flex", flexDirection: "row"}}>
-                            {
-                                array.map((itemValue) => (
-                                    <div style={{height: 400, display: "flex", flexDirection: "column", justifyContent: "flex-end"}}>
-                                        {giveMeObject(itemValue)}
-                                        <div className="box-item-starter"></div>
+            <div className="main">
+                <div className="main-alt">
+                    <h1>Hosgeldin : {userData.username}</h1>
+                    <h1>{words}</h1>
+                    <button className="btn-speech" type="button" onClick={() => textToSpeech()}><RxSpeakerLoud size={30}/></button>
+                    <div className="container">
+                        <div className="alt-container">
+                        {
+                            array.map((itemValue, index) => {
+                                return (
+                                    <div className="container-top-main">
+                                        <div className="btn-increase">
+                                            <button disabled={itemValue === 9} style={itemValue === 9 ? {cursor:"not-allowed",backgroundColor:"#E7C916"} : {cursor:"pointer"}} type="button" className="btn-artir"
+                                                    onClick={() => dispatch(increment(index))}>+
+                                            </button>
+                                        </div>
+                                        <div className="array-item">{itemValue}</div>
+                                        <div className="btn-decrease">
+                                            <button disabled={itemValue === 0} style={itemValue === 0 ? {cursor:"not-allowed",backgroundColor:"#E7C916"} : {cursor:"pointer"}} type="button" className="btn-azalt"
+                                                    onClick={() => dispatch(decrement(index))}>-
+                                            </button>
+                                        </div>
                                     </div>
-                                ))
-                            }
+                                )
+                            })
+                        }
+                        </div>
+                        <div className="btn-holder">
+                            <button type="button" className="reset" onClick={() => resetData()}>Reset</button>
+                            <button type="button" className="logout" onClick={() => logout()}>Logout</button>
+                            <input type="text" className="new-data-input" placeholder="New" value={dataValue}
+                                   onChange={(e) => setDataValue(e.target.value)}/>
+                            <button type="button" className="new-data-btn" onClick={() => newData()}>New</button>
+                        </div>
+                        <div className="container-bottom">
+                            <div className="box-container">
+                                <div style={{display: "flex", flexDirection: "row"}}>
+                                    {
+                                        array.map((itemValue) => (
+                                            <div style={{
+                                                height: 400,
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "flex-end"
+                                            }}>
+                                                {giveMeObject(itemValue)}
+                                                <div className="box-item-starter"></div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </>
     )
